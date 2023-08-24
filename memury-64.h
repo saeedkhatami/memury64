@@ -7,9 +7,8 @@
 #include <array>
 #include <vector>
 
-#ifndef MEMURY64_GLOBAL_SCOPE 
 namespace memury64 {
-#endif
+
 	// Wrapper for working with memory addresses
 	class Address {
 	public:
@@ -188,7 +187,7 @@ namespace memury64 {
 				patches[addr] = data;
 		}
 
-		
+
 		static Address Scan(std::string_view signature, std::string_view moduleName) {
 			return PatternScanInModule(moduleName.data(), ParseCombo(signature).data());
 		}
@@ -318,6 +317,4 @@ namespace memury64 {
 		}
 	};
 
-#ifndef MEMURY64_GLOBAL_SCOPE 
 } // namespace memury64
-#endif
