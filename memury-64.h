@@ -213,12 +213,12 @@ namespace memury64 {
 		}
 
 		template <typename T = void*>
-		static T GetVM(size_t methodIndex)
+		static T GetVM(auto obj, size_t methodIndex)
 		{
 			return T((*(uintptr_t**)obj)[methodIndex]);
 		}
 
-		inline bool IsValidReadPtr(auto p) {
+		static bool IsValidReadPtr(auto p) {
 			if (!p)
 				return false;
 			MEMORY_BASIC_INFORMATION mbi;
@@ -235,7 +235,7 @@ namespace memury64 {
 			return true;
 		}
 
-		inline bool IsValidWritePtr(auto p)
+		static bool IsValidWritePtr(auto p)
 		{
 			MEMORY_BASIC_INFORMATION mbi;
 			memset(&mbi, 0, sizeof(mbi));
@@ -251,7 +251,7 @@ namespace memury64 {
 		}
 
 
-		inline bool IsValidCodePtr(auto p)
+		static bool IsValidCodePtr(auto p)
 		{
 			MEMORY_BASIC_INFORMATION mbi;
 			memset(&mbi, 0, sizeof(mbi));
